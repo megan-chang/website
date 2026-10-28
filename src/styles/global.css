@@ -1,0 +1,241 @@
+@import "@fontsource/instrument-serif/400.css";
+@import "@fontsource/instrument-serif/400-italic.css";
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/geist-mono";
+@import "./tokens.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  line-height: 1.6;
+  color: var(--color-ink);
+  /* Aida cloth: a faint woven grid behind everything */
+  background-color: var(--color-bg);
+  background-image:
+    linear-gradient(var(--color-bg-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-bg-grid) 1px, transparent 1px);
+  background-size: 14px 14px;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+}
+
+/* Big headings are editorial serif; smaller ones stay in the sans for a crisp, modern feel */
+h1,
+h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+h3,
+h4 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+h1 em,
+h2 em {
+  font-style: italic;
+  color: var(--color-accent);
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* ---- Stitched links -------------------------------------------------------
+ * Links get a dashed "running stitch" underline drawn with a repeating gradient.
+ * On hover the thread changes colour and the stitches march along.
+ */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.stitch-link,
+.prose a {
+  --stitch-color: var(--color-accent);
+  padding-bottom: 3px;
+  background-image: linear-gradient(
+    90deg,
+    var(--stitch-color) 0 var(--stitch-dash),
+    transparent var(--stitch-dash) calc(var(--stitch-dash) + var(--stitch-gap))
+  );
+  background-size: calc(var(--stitch-dash) + var(--stitch-gap)) 2px;
+  background-repeat: repeat-x;
+  background-position: 0 100%;
+  transition: color 0.2s ease;
+}
+
+.stitch-link:hover,
+.stitch-link:focus-visible,
+.prose a:hover,
+.prose a:focus-visible {
+  --stitch-color: var(--color-accent-2);
+  color: var(--color-accent);
+  animation: stitch-march 0.6s linear infinite;
+}
+
+@keyframes stitch-march {
+  to {
+    background-position: calc(var(--stitch-dash) + var(--stitch-gap)) 100%;
+  }
+}
+
+:focus-visible {
+  outline: 2px dashed var(--color-accent);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--thread-blush);
+  color: #3a2c24;
+}
+
+/* ---- Layout helpers --------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: calc(var(--content-width) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -4rem;
+  z-index: 100;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  background: var(--color-ink);
+  color: var(--color-bg);
+}
+
+.skip-link:focus {
+  top: var(--space-4);
+}
+
+/* ---- Shared bits ------------------------------------------------------------ */
+.card {
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+/* A dashed inner outline, like the stitched edge of a patch */
+.patch {
+  position: relative;
+}
+
+.patch::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1.5px dashed var(--color-border);
+  border-radius: calc(var(--radius-md) - 6px);
+  pointer-events: none;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.7em 1.3em;
+  border: 2px solid var(--color-ink);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  line-height: 1;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  box-shadow: 3px 3px 0 var(--color-ink);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--color-ink);
+}
+
+.btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--color-ink);
+}
+
+.btn--primary {
+  background: var(--color-fill);
+  color: var(--color-on-fill);
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

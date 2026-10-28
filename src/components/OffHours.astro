@@ -1,0 +1,65 @@
+---
+import Section from "./Section.astro";
+import CrossStitch from "./CrossStitch.astro";
+import { hobbies } from "@data/hobbies";
+---
+
+<Section id="off-hours" eyebrow="07 / after hours" title="When I'm not on call">
+  <ul class="hoops">
+    {
+      hobbies.map((hobby) => (
+        <li class="hoop-card">
+          <div class="hoop">
+            <CrossStitch pattern={hobby.pattern} />
+          </div>
+          <h3>{hobby.name}</h3>
+          <p>{hobby.blurb}</p>
+        </li>
+      ))
+    }
+  </ul>
+</Section>
+
+<style>
+  .hoops {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+    gap: var(--space-6);
+    list-style: none;
+    text-align: center;
+  }
+
+  .hoop {
+    display: grid;
+    place-items: center;
+    width: min(100%, 11rem);
+    aspect-ratio: 1;
+    margin: 0 auto var(--space-4);
+    border-radius: 50%;
+    border: 9px solid var(--color-wood);
+    background:
+      linear-gradient(var(--color-bg-grid) 1px, transparent 1px) 0 0 / 9px 9px,
+      linear-gradient(90deg, var(--color-bg-grid) 1px, transparent 1px) 0 0 / 9px 9px,
+      var(--color-surface);
+    box-shadow: var(--shadow-card);
+    transition: rotate 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .hoop :global(.cross-stitch) {
+    width: 48%;
+  }
+
+  .hoop-card:hover .hoop {
+    rotate: -10deg;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  p {
+    margin-top: var(--space-1);
+    color: var(--color-ink-soft);
+    font-size: var(--text-sm);
+  }
+</style>

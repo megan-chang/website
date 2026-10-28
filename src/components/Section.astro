@@ -1,0 +1,53 @@
+---
+interface Props {
+  id: string;
+  /** Small mono label above the title, e.g. "02 / release notes" */
+  eyebrow: string;
+  title: string;
+  intro?: string;
+}
+
+const { id, eyebrow, title, intro } = Astro.props;
+---
+
+<section id={id} class="section" aria-labelledby={`${id}-title`}>
+  <div class="container">
+    <header class="section-header">
+      <p class="eyebrow mono">{eyebrow}</p>
+      <h2 id={`${id}-title`}>{title}</h2>
+      {intro && <p class="intro">{intro}</p>}
+    </header>
+    <slot />
+  </div>
+</section>
+
+<style>
+  .section {
+    padding-block: var(--space-8) 0;
+  }
+
+  .section-header {
+    max-width: 40rem;
+    margin-bottom: var(--space-6);
+  }
+
+  .eyebrow {
+    display: inline-block;
+    margin-bottom: var(--space-3);
+    padding: 0.2em 0.75em;
+    border: 1.5px dashed var(--color-accent);
+    border-radius: var(--radius-pill);
+    font-size: var(--text-xs);
+    color: var(--color-accent);
+  }
+
+  h2 {
+    font-size: var(--text-xl);
+  }
+
+  .intro {
+    margin-top: var(--space-3);
+    color: var(--color-ink-soft);
+    font-size: var(--text-lg);
+  }
+</style>

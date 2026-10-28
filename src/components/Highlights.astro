@@ -1,0 +1,83 @@
+---
+import Section from "./Section.astro";
+import CrossStitch from "./CrossStitch.astro";
+import { highlights } from "@data/highlights";
+---
+
+<Section id="highlights" eyebrow="03 / greatest hits" title="Things I'm proud of">
+  <ul class="grid">
+    {
+      highlights.map((item) => (
+        <li class="card patch item">
+          <div class="icon">
+            <CrossStitch pattern={item.pattern} />
+          </div>
+          <h3>{item.title}</h3>
+          <p>{item.body}</p>
+          <ul class="stack" aria-label="Related tech">
+            {item.stack.map((tech) => (
+              <li class="mono">{tech}</li>
+            ))}
+          </ul>
+        </li>
+      ))
+    }
+  </ul>
+</Section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    gap: var(--space-5);
+    list-style: none;
+  }
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-6) var(--space-5);
+    transition:
+      transform 0.2s ease,
+      rotate 0.2s ease;
+  }
+
+  .item:nth-child(odd):hover {
+    rotate: -1.2deg;
+    transform: translateY(-4px);
+  }
+
+  .item:nth-child(even):hover {
+    rotate: 1.2deg;
+    transform: translateY(-4px);
+  }
+
+  .icon {
+    width: 3.25rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
+
+  p {
+    color: var(--color-ink-soft);
+    font-size: var(--text-sm);
+    flex: 1;
+  }
+
+  .stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    list-style: none;
+  }
+
+  .stack li {
+    padding: 0.2em 0.6em;
+    border-radius: var(--radius-pill);
+    background: var(--color-surface-2);
+    font-size: 0.75rem;
+  }
+</style>

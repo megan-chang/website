@@ -1,0 +1,221 @@
+---
+import Section from "./Section.astro";
+import { releases, type ChangeType } from "@data/experience";
+
+const typeColor: Record<ChangeType, string> = {
+  feat: "var(--color-accent-2)",
+  ops: "var(--color-accent)",
+  test: "var(--color-accent-3)",
+  lead: "var(--color-accent-3)",
+  refactor: "var(--color-accent-2)",
+  fix: "var(--color-accent)",
+  chore: "var(--color-ink-soft)",
+};
+---
+
+<Section
+  id="experience"
+  eyebrow="02 / CHANGELOG.md"
+  title="Release notes"
+  intro="My career, versioned. Every release shipped to production; one was a public beta."
+>
+  <ol class="releases">
+    {
+      releases.map((release, index) => (
+        <li class="release">
+          <div class="rail" aria-hidden="true">
+            <span class="knot" />
+          </div>
+          <article class="card release-card">
+            <header>
+              <div class="meta mono">
+                <span class="version">{release.version}</span>
+                {release.tag && <span class:list={["tag", release.tag]}>{release.tag}</span>}
+                <span class="dates">
+                  {release.start} – {release.end}
+                </span>
+              </div>
+              <h3>
+                {release.role} <span class="org">@ {release.org}</span>
+              </h3>
+              <p class="summary">{release.summary}</p>
+            </header>
+            <details open={index === 0}>
+              <summary class="mono">
+                <span class="when-closed">show full notes ({release.changes.length})</span>
+                <span class="when-open">hide notes</span>
+              </summary>
+              <ul class="changes">
+                {release.changes.map((change) => (
+                  <li>
+                    <span class="type mono" style={`--type-color: ${typeColor[change.type]}`}>
+                      {change.type}:
+                    </span>
+                    <span>{change.text}</span>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          </article>
+        </li>
+      ))
+    }
+  </ol>
+</Section>
+
+<style>
+  .releases {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  .release {
+    display: grid;
+    grid-template-columns: 1.5rem 1fr;
+    gap: var(--space-3);
+  }
+
+  /* A running stitch connecting the releases */
+  .rail {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .rail::before {
+    content: "";
+    position: absolute;
+    top: 1.6rem;
+    bottom: calc(-1 * var(--space-5));
+    border-left: 2px dashed var(--thread-rose);
+  }
+
+  .release:last-child .rail::before {
+    display: none;
+  }
+
+  .knot {
+    position: relative;
+    margin-top: 1.4rem;
+    width: 0.9rem;
+    height: 0.9rem;
+    border-radius: 50%;
+    background: var(--thread-rose);
+    box-shadow: 0 0 0 4px var(--color-bg);
+  }
+
+  .release-card {
+    padding: var(--space-5);
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2) var(--space-3);
+    font-size: var(--text-xs);
+    color: var(--color-ink-soft);
+  }
+
+  .version {
+    padding: 0.15em 0.6em;
+    border-radius: var(--radius-sm);
+    background: var(--color-ink);
+    color: var(--color-bg);
+    font-weight: 700;
+  }
+
+  .tag {
+    padding: 0.15em 0.6em;
+    border-radius: var(--radius-pill);
+    font-weight: 700;
+    color: var(--color-on-fill);
+  }
+
+  .tag.latest {
+    background: var(--thread-rose);
+  }
+
+  .tag.beta {
+    background: var(--thread-blush);
+  }
+
+  h3 {
+    margin-top: var(--space-3);
+    font-size: var(--text-lg);
+  }
+
+  .org {
+    font-weight: 400;
+    color: var(--color-ink-soft);
+  }
+
+  .summary {
+    margin-top: var(--space-2);
+    color: var(--color-ink-soft);
+  }
+
+  details {
+    margin-top: var(--space-4);
+  }
+
+  summary {
+    display: inline-block;
+    font-size: var(--text-xs);
+    color: var(--color-accent);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary::before {
+    content: "+ ";
+  }
+
+  details[open] summary::before {
+    content: "− ";
+  }
+
+  .when-open,
+  details[open] .when-closed {
+    display: none;
+  }
+
+  details[open] .when-open {
+    display: inline;
+  }
+
+  .changes {
+    display: grid;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+    padding-top: var(--space-4);
+    border-top: 1.5px dashed var(--color-border);
+    list-style: none;
+  }
+
+  .changes li {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+  }
+
+  .type {
+    color: var(--type-color);
+    font-weight: 700;
+  }
+
+  @media (max-width: 30rem) {
+    .changes li {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+  }
+</style>

@@ -1,0 +1,59 @@
+---
+import Section from "./Section.astro";
+import CrossStitch from "./CrossStitch.astro";
+---
+
+<Section id="projects" eyebrow="04 / side quests" title="Projects">
+  <div class="card patch wip">
+    <div class="art">
+      <CrossStitch pattern="wip" label="A half-stitched laptop pattern" />
+    </div>
+    <div>
+      <p class="label mono">status: in progress</p>
+      <h3>Something's on the hoop</h3>
+      <p class="body">
+        A side project is being stitched together right now. Check back soon, or peek at my
+        <a class="stitch-link" href="https://github.com/megan-chang" target="_blank" rel="noopener"
+          >GitHub</a
+        > in the meantime.
+      </p>
+    </div>
+  </div>
+</Section>
+
+<style>
+  .wip {
+    display: grid;
+    gap: var(--space-5);
+    align-items: center;
+    padding: var(--space-6);
+    border-style: dashed;
+  }
+
+  .art {
+    width: min(100%, 11rem);
+  }
+
+  .label {
+    font-size: var(--text-xs);
+    color: var(--color-accent-2);
+  }
+
+  h3 {
+    margin-top: var(--space-2);
+    font-size: var(--text-lg);
+  }
+
+  .body {
+    margin-top: var(--space-2);
+    color: var(--color-ink-soft);
+    max-width: 36rem;
+  }
+
+  @media (min-width: 40rem) {
+    .wip {
+      grid-template-columns: auto 1fr;
+      gap: var(--space-7);
+    }
+  }
+</style>

@@ -1,0 +1,63 @@
+---
+import { patterns, threadVar, type PatternName } from "@data/patterns";
+
+interface Props {
+  pattern: PatternName;
+  /** Accessible description. Omit for purely decorative stitches. */
+  label?: string;
+  class?: string;
+}
+
+const { pattern, label, class: className } = Astro.props;
+const rows = patterns[pattern];
+const cell = 10;
+const inset = 2;
+const width = Math.max(...rows.map((row) => row.length));
+
+// Each stitch is two crossing strokes, the "/" laid first and the "\" on top.
+const stitches = rows.flatMap((row, y) =>
+  [...row].flatMap((char, x) => {
+    const color = threadVar[char.toUpperCase()];
+    if (!color) return [];
+    return [{ x: x * cell, y: y * cell, color, planned: char !== char.toUpperCase() }];
+  }),
+);
+---
+
+<svg
+  class:list={["cross-stitch", className]}
+  viewBox={`0 0 ${width * cell} ${rows.length * cell}`}
+  role={label ? "img" : undefined}
+  aria-label={label}
+  aria-hidden={label ? undefined : "true"}
+>
+  {
+    stitches.map(({ x, y, color, planned }) => (
+      <g stroke={color} opacity={planned ? 0.22 : 1}>
+        <line x1={x + inset} y1={y + cell - inset} x2={x + cell - inset} y2={y + inset} />
+        <line
+          x1={x + inset}
+          y1={y + inset}
+          x2={x + cell - inset}
+          y2={y + cell - inset}
+          class="top"
+        />
+      </g>
+    ))
+  }
+</svg>
+
+<style>
+  .cross-stitch {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    stroke-width: 2.6;
+    stroke-linecap: round;
+  }
+
+  /* The top thread catches a little light */
+  .top {
+    filter: brightness(1.12);
+  }
+</style>
