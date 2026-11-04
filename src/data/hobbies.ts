@@ -13,6 +13,11 @@ export const hobbies: Hobby[] = [
     pattern: "strawberry",
   },
   {
+    name: "Ballet",
+    blurb: "Years of dance. I still point my toes while the build runs.",
+    pattern: "bow",
+  },
+  {
     name: "Fashion",
     blurb: "Colour palettes are a design system, fight me.",
     pattern: "dress",

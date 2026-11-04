@@ -31,12 +31,14 @@ import { captions, site } from "@data/site";
     </div>
 
     <div class="hoop" aria-hidden="true">
-      <div class="hoop-inner">
+      <div class="hoop-inner aida">
         <CrossStitch pattern="avatar" class="avatar" />
       </div>
       <span class="hoop-screw"></span>
-      <CrossStitch pattern="heart" class="sticker sticker-heart" />
-      <CrossStitch pattern="strawberry" class="sticker sticker-berry" />
+      <CrossStitch pattern="flower" class="sticker sticker-flower" />
+      <div class="sticker sticker-miffy miffy-patch aida">
+        <CrossStitch pattern="miffy" backing="W" />
+      </div>
     </div>
   </div>
 
@@ -159,15 +161,32 @@ import { captions, site } from "@data/site";
     animation: bob 4s ease-in-out infinite;
   }
 
-  .hoop :global(.sticker-heart) {
-    right: -4%;
-    top: 12%;
+  .hoop :global(.sticker-flower) {
+    right: -9%;
+    top: 2%;
+    width: 20%;
   }
 
-  .hoop :global(.sticker-berry) {
-    left: -2%;
-    bottom: 6%;
+  .hoop :global(.sticker-miffy) {
+    left: -6%;
+    bottom: 0;
+    width: 30%;
     animation-delay: -2s;
+  }
+
+  /* An embroidered patch: Miffy's head (19 x 27 stitches) on pink, with a running-stitch edge */
+  .miffy-patch {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--thread-blush);
+    border: 2px dashed var(--color-accent);
+    box-shadow: inset 0 0 0 5px var(--thread-blush);
+  }
+
+  .miffy-patch :global(.cross-stitch) {
+    width: 54%;
   }
 
   @keyframes bob {
@@ -227,6 +246,17 @@ import { captions, site } from "@data/site";
   @keyframes blink {
     50% {
       opacity: 0;
+    }
+  }
+
+  /* On phones the hoop spans the screen, so keep the stickers from hanging off the edges */
+  @media (max-width: 30rem) {
+    .hoop :global(.sticker-flower) {
+      right: 0;
+    }
+
+    .hoop :global(.sticker-miffy) {
+      left: -2%;
     }
   }
 

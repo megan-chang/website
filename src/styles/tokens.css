@@ -6,14 +6,16 @@
  * Palette: Pantone 3519 C (rose), sage green, Pantone 18-1222 Cocoa Brown, and Coconut.
  */
 
-:root {
+/* .aida (embroidery fabric) keeps the light palette in both themes, like real linen */
+:root,
+.aida {
   /* Thread colours: used for stitches, fills, and decoration */
   --thread-rose: #d4858f;
   --thread-sage: #6b7a4f;
   --thread-cocoa: #6a5546;
   --thread-sand: #c9b99c;
   --thread-blush: #e1a6ad;
-  --thread-hair: #4a372c;
+  --thread-hair: #1f1a17;
   --thread-skin: #dcab8b;
 
   /* Surfaces & text */
@@ -72,12 +74,14 @@
 }
 
 :root[data-theme="dark"] {
+  /* --fabric-dim (dark only): light "fabric" like hoops and patches is dimmed a touch at night.
+     Defined only here so .aida, which re-applies the light palette, still inherits it. */
   --thread-rose: #dc929c;
   --thread-sage: #a6b882;
   --thread-cocoa: #c9a690;
   --thread-sand: #8c7a64;
   --thread-blush: #e6aeb5;
-  --thread-hair: #8a6048;
+  --thread-hair: #1f1a17;
   --thread-skin: #dcab8b;
 
   --color-bg: #2b221d;
@@ -92,6 +96,7 @@
   --color-accent-3: #d2b39e;
   --color-on-fill: #2b221d;
   --color-caption-bg: #17110e;
+  --fabric-dim: 0.88;
   --shadow-card: 0 1px 0 rgb(0 0 0 / 0.2), 0 12px 30px -16px rgb(0 0 0 / 0.7);
 
   color-scheme: dark;
@@ -104,7 +109,7 @@
     --thread-cocoa: #c9a690;
     --thread-sand: #8c7a64;
     --thread-blush: #e6aeb5;
-    --thread-hair: #8a6048;
+    --thread-hair: #1f1a17;
     --thread-skin: #dcab8b;
 
     --color-bg: #2b221d;
@@ -119,6 +124,7 @@
     --color-accent-3: #d2b39e;
     --color-on-fill: #2b221d;
     --color-caption-bg: #17110e;
+    --fabric-dim: 0.88;
     --shadow-card: 0 1px 0 rgb(0 0 0 / 0.2), 0 12px 30px -16px rgb(0 0 0 / 0.7);
 
     color-scheme: dark;

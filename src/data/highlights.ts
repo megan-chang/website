@@ -28,7 +28,7 @@ export const highlights: Highlight[] = [
   },
   {
     title: "On-call, minus the panic",
-    body: "Production incident response for systems people rely on live. Calm under pressure has been practised on-air.",
+    body: "Production incident response for systems people rely on live. Calm under pressure has been practised on air.",
     pattern: "bell",
     stack: ["CloudWatch", "ElastiCache", "Runbooks"],
   },

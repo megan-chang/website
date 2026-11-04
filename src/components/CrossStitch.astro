@@ -5,10 +5,12 @@ interface Props {
   pattern: PatternName;
   /** Accessible description. Omit for purely decorative stitches. */
   label?: string;
+  /** Pattern letters whose stitches get a solid backing, so an area reads as filled (e.g. "W"). */
+  backing?: string;
   class?: string;
 }
 
-const { pattern, label, class: className } = Astro.props;
+const { pattern, label, backing = "", class: className } = Astro.props;
 const rows = patterns[pattern];
 const cell = 10;
 const inset = 2;
@@ -19,7 +21,15 @@ const stitches = rows.flatMap((row, y) =>
   [...row].flatMap((char, x) => {
     const color = threadVar[char.toUpperCase()];
     if (!color) return [];
-    return [{ x: x * cell, y: y * cell, color, planned: char !== char.toUpperCase() }];
+    return [
+      {
+        x: x * cell,
+        y: y * cell,
+        color,
+        planned: char !== char.toUpperCase(),
+        backed: backing.includes(char),
+      },
+    ];
   }),
 );
 ---
@@ -31,6 +41,11 @@ const stitches = rows.flatMap((row, y) =>
   aria-label={label}
   aria-hidden={label ? undefined : "true"}
 >
+  {stitches
+    .filter((s) => s.backed)
+    .map(({ x, y, color }) => (
+      <rect x={x} y={y} width={cell} height={cell} fill={color} class="backing" />
+    ))}
   {stitches.map(({ x, y, color, planned }) => (
     <g stroke={color} opacity={planned ? 0.22 : 1}>
       <line x1={x + inset} y1={y + cell - inset} x2={x + cell - inset} y2={y + inset} />
@@ -46,6 +61,11 @@ const stitches = rows.flatMap((row, y) =>
     overflow: visible;
     stroke-width: 2.6;
     stroke-linecap: round;
+  }
+
+  /* Slightly translucent so the stitch texture still shows through */
+  .backing {
+    opacity: 0.85;
   }
 
   /* The top thread catches a little light */

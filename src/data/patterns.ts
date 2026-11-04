@@ -2,7 +2,9 @@
  * Cross-stitch patterns, drawn as text grids. Each character is one stitch:
  *
  *   R rose     G sage     B cocoa      Y sand     P blush
- *   H hair     S skin     K ink          E eyes (dark in both themes)     .  empty
+ *   H hair     S skin     K ink          E eyes (dark in both themes)
+ *   W white    D deep rose (fixed)
+ *   .  empty
  *
  * A lowercase letter is a stitch that's "planned but not stitched yet": it renders faintly,
  * like the printed grid on a half-finished pattern.
@@ -20,6 +22,8 @@ export const threadVar: Record<string, string> = {
   S: "var(--thread-skin)",
   K: "var(--color-ink)",
   E: "#2b211b",
+  W: "#fffdf8",
+  D: "#9e4f5a",
 };
 
 // prettier-ignore
@@ -124,6 +128,67 @@ export const patterns = {
     "KBBBKYYYK",
     "KKKKKKKKK",
     "K.K.K.K.K",
+  ],
+  // A flower: rose petals with blush highlights, a cocoa centre, and a sage stem with leaves.
+  flower: [
+    "...RRR...",
+    "..RRPRR..",
+    "RR.RRR.RR",
+    "RPRRBRRPR",
+    "RRRBBBRRR",
+    "RPRRBRRPR",
+    "RR.RRR.RR",
+    "..RRPRR..",
+    "...RRR...",
+    "....G....",
+    ".GG.G....",
+    "..GGG.GG.",
+    "....GGG..",
+    "....G....",
+  ],
+  // Megan's Miffy (head only), from her bead design. One stitch = her X mouth.
+  miffy: [
+    "...EEEE.....EEEE...",
+    "..EWWWWE...EWWWWE..",
+    "..EWWWWE...EWWWWE..",
+    "..EWWWWWE.EWWWWWE..",
+    ".EWWWWWWE.EWWWWWWE.",
+    ".EWWWWWWE.EWWWWWWE.",
+    ".EWWWWWWE.EWWWWWWE.",
+    ".EWWWWWWE.EWWWWWWE.",
+    ".EWWWWWWE.EWWWWWWE.",
+    ".EWWWWWWE.EWWWWWWE.",
+    "..EWWWWWE.EWWWWWE..",
+    "...EWWWWE.EWWWWE...",
+    "....EWWWEEEWWWE....",
+    "....EWWWWWWWWWE....",
+    "...EWWWWWWWWWWWE...",
+    "..EWWWWWWWWWWWWWE..",
+    ".EWWWWWWWWWWWWWWWE.",
+    "EEWWWWWWWWWWWWWWWEE",
+    "EWWWWWWWWWWWWWWWWWE",
+    "EWWWEWWWWWWWWWEWWWE",
+    "EWWWEWWWWWWWWWEWWWE",
+    "EWWWWWWWWWWWWWWWWWE",
+    "EWWWWWWWEWEWWWWWWWE",
+    ".EWWWWWWWEWWWWWWWE.",
+    "..EWWWWWEWEWWWWWE..",
+    "...EWWWWWWWWWWWE...",
+    "....EEEEEEEEEEE....",
+  ],
+  // A ribbon bow (ballet): deep-rose outline and knot, rose loops with a blush sheen.
+  bow: [
+    ".DD.........DD.",
+    "DPPDD.....DDPPD",
+    "DPRRRDD.DDRRRPD",
+    "DRRRRRDDDRRRRRD",
+    "DRRRRRDDDRRRRRD",
+    "DRRRRDDDDDRRRRD",
+    "DRRDD.DDD.DDRRD",
+    ".DD..RR.RR..DD.",
+    "....RR...RR....",
+    "...RR.....RR...",
+    "...RRR...RRR...",
   ],
   // A laptop that's only partly stitched: the side project still in progress.
   wip: [

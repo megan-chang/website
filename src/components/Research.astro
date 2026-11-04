@@ -105,6 +105,7 @@ import { education, publications } from "@data/publications";
 
   /* A petri dish: always light, so the dark green helices read in both themes */
   .dish {
+    filter: brightness(var(--fabric-dim, 1));
     padding: 8%;
     border-radius: 50%;
     background: radial-gradient(circle at 35% 30%, #fffdf8, #f5efe4 60%, #e6dccb);
