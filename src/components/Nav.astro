@@ -12,15 +12,13 @@ import { nav } from "@data/site";
     </a>
 
     <ul class="links">
-      {
-        nav.map((item) => (
-          <li>
-            <a class="stitch-link" href={item.href}>
-              {item.label}
-            </a>
-          </li>
-        ))
-      }
+      {nav.map((item) => (
+        <li>
+          <a class="stitch-link" href={item.href}>
+            {item.label}
+          </a>
+        </li>
+      ))}
     </ul>
 
     <div class="actions">
@@ -30,13 +28,11 @@ import { nav } from "@data/site";
           <span aria-hidden="true">menu</span>
         </summary>
         <ul class="menu-list card">
-          {
-            nav.map((item) => (
-              <li>
-                <a href={item.href}>{item.label}</a>
-              </li>
-            ))
-          }
+          {nav.map((item) => (
+            <li>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))}
         </ul>
       </details>
     </div>

@@ -10,27 +10,25 @@ import { skillGroups } from "@data/skills";
   intro="Sorted by colour, like any good floss organizer."
 >
   <div class="box">
-    {
-      skillGroups.map((group) => (
-        <section class="card compartment" style={`--thread: var(--thread-${group.color})`}>
-          <header>
-            {/* A skein: twisted thread with a paper band around the middle */}
-            <span class="skein" aria-hidden="true">
-              <span class="band" />
-            </span>
-            <div>
-              <h3>{group.name}</h3>
-              {group.note && <p class="note">{group.note}</p>}
-            </div>
-          </header>
-          <ul>
-            {group.skills.map((skill) => (
-              <li>{skill}</li>
-            ))}
-          </ul>
-        </section>
-      ))
-    }
+    {skillGroups.map((group) => (
+      <section class="card compartment" style={`--thread: var(--thread-${group.color})`}>
+        <header>
+          {/* A skein: twisted thread with a paper band around the middle */}
+          <span class="skein" aria-hidden="true">
+            <span class="band" />
+          </span>
+          <div>
+            <h3>{group.name}</h3>
+            {group.note && <p class="note">{group.note}</p>}
+          </div>
+        </header>
+        <ul>
+          {group.skills.map((skill) => (
+            <li>{skill}</li>
+          ))}
+        </ul>
+      </section>
+    ))}
   </div>
 </Section>
 

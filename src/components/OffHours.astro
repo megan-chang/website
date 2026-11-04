@@ -6,17 +6,15 @@ import { hobbies } from "@data/hobbies";
 
 <Section id="off-hours" eyebrow="07 / after hours" title="When I'm not on call">
   <ul class="hoops">
-    {
-      hobbies.map((hobby) => (
-        <li class="hoop-card">
-          <div class="hoop">
-            <CrossStitch pattern={hobby.pattern} />
-          </div>
-          <h3>{hobby.name}</h3>
-          <p>{hobby.blurb}</p>
-        </li>
-      ))
-    }
+    {hobbies.map((hobby) => (
+      <li class="hoop-card">
+        <div class="hoop">
+          <CrossStitch pattern={hobby.pattern} />
+        </div>
+        <h3>{hobby.name}</h3>
+        <p>{hobby.blurb}</p>
+      </li>
+    ))}
   </ul>
 </Section>
 

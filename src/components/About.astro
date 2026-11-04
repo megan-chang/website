@@ -11,8 +11,8 @@ import { currently } from "@data/hobbies";
   <div class="about-grid">
     <div class="prose">
       <p>
-        I'm a software engineer at <strong>AI-Media</strong> in Toronto, and a primary backend engineer
-        who owns <strong>Lexi</strong>, <strong>Translate</strong>, and
+        I'm a software engineer at <strong>AI-Media</strong> in Toronto, and a primary backend
+        engineer who owns <strong>Lexi</strong>, <strong>Translate</strong>, and
         <strong>Voice Cloud</strong>, the live captioning, translation, and voice dubbing products
         that are the company's key products. I take features from technical design to production,
         run planning, and answer the alerts when something breaks.
@@ -32,14 +32,12 @@ import { currently } from "@data/hobbies";
     <aside class="currently card patch" aria-label="What I'm up to right now">
       <p class="currently-title mono">$ cat ~/currently.txt</p>
       <dl>
-        {
-          currently.map(({ label, value }) => (
-            <div class="row">
-              <dt class="mono">{label}:</dt>
-              <dd>{value}</dd>
-            </div>
-          ))
-        }
+        {currently.map(({ label, value }) => (
+          <div class="row">
+            <dt class="mono">{label}:</dt>
+            <dd>{value}</dd>
+          </div>
+        ))}
       </dl>
     </aside>
   </div>

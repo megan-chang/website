@@ -20,46 +20,44 @@ const typeColor: Record<ChangeType, string> = {
   intro="My career, versioned. Every release shipped to production; one was a public beta."
 >
   <ol class="releases">
-    {
-      releases.map((release, index) => (
-        <li class="release">
-          <div class="rail" aria-hidden="true">
-            <span class="knot" />
-          </div>
-          <article class="card release-card">
-            <header>
-              <div class="meta mono">
-                <span class="version">{release.version}</span>
-                {release.tag && <span class:list={["tag", release.tag]}>{release.tag}</span>}
-                <span class="dates">
-                  {release.start} – {release.end}
-                </span>
-              </div>
-              <h3>
-                {release.role} <span class="org">@ {release.org}</span>
-              </h3>
-              <p class="summary">{release.summary}</p>
-            </header>
-            <details open={index === 0}>
-              <summary class="mono">
-                <span class="when-closed">show full notes ({release.changes.length})</span>
-                <span class="when-open">hide notes</span>
-              </summary>
-              <ul class="changes">
-                {release.changes.map((change) => (
-                  <li>
-                    <span class="type mono" style={`--type-color: ${typeColor[change.type]}`}>
-                      {change.type}:
-                    </span>
-                    <span>{change.text}</span>
-                  </li>
-                ))}
-              </ul>
-            </details>
-          </article>
-        </li>
-      ))
-    }
+    {releases.map((release, index) => (
+      <li class="release">
+        <div class="rail" aria-hidden="true">
+          <span class="knot" />
+        </div>
+        <article class="card release-card">
+          <header>
+            <div class="meta mono">
+              <span class="version">{release.version}</span>
+              {release.tag && <span class:list={["tag", release.tag]}>{release.tag}</span>}
+              <span class="dates">
+                {release.start} – {release.end}
+              </span>
+            </div>
+            <h3>
+              {release.role} <span class="org">@ {release.org}</span>
+            </h3>
+            <p class="summary">{release.summary}</p>
+          </header>
+          <details open={index === 0}>
+            <summary class="mono">
+              <span class="when-closed">show full notes ({release.changes.length})</span>
+              <span class="when-open">hide notes</span>
+            </summary>
+            <ul class="changes">
+              {release.changes.map((change) => (
+                <li>
+                  <span class="type mono" style={`--type-color: ${typeColor[change.type]}`}>
+                    {change.type}:
+                  </span>
+                  <span>{change.text}</span>
+                </li>
+              ))}
+            </ul>
+          </details>
+        </article>
+      </li>
+    ))}
   </ol>
 </Section>
 

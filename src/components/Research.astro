@@ -35,44 +35,40 @@ import { education, publications } from "@data/publications";
 
     <div class="side">
       <ul class="degrees">
-        {
-          education.map((item) => (
-            <li class="card">
-              <div>
-                <p class="degree">{item.degree}</p>
-                <p class="school">
-                  {item.school} · {item.years}
-                </p>
-              </div>
-            </li>
-          ))
-        }
+        {education.map((item) => (
+          <li class="card">
+            <div>
+              <p class="degree">{item.degree}</p>
+              <p class="school">
+                {item.school} · {item.years}
+              </p>
+            </div>
+          </li>
+        ))}
       </ul>
 
       <ul class="papers">
-        {
-          publications.map((paper) => (
-            <li>
-              <a class="card paper" href={paper.url} target="_blank" rel="noopener">
-                <Picture
-                  src={paper.image}
-                  alt={paper.imageAlt}
-                  widths={[160, 320]}
-                  sizes="7rem"
-                  formats={["avif", "webp"]}
-                  class="thumb"
-                />
-                <div>
-                  <p class="venue mono">
-                    {paper.venue} · {paper.year}
-                  </p>
-                  <p class="paper-title">{paper.title}</p>
-                  <p class="authors">{paper.authors}</p>
-                </div>
-              </a>
-            </li>
-          ))
-        }
+        {publications.map((paper) => (
+          <li>
+            <a class="card paper" href={paper.url} target="_blank" rel="noopener">
+              <Picture
+                src={paper.image}
+                alt={paper.imageAlt}
+                widths={[160, 320]}
+                sizes="7rem"
+                formats={["avif", "webp"]}
+                class="thumb"
+              />
+              <div>
+                <p class="venue mono">
+                  {paper.venue} · {paper.year}
+                </p>
+                <p class="paper-title">{paper.title}</p>
+                <p class="authors">{paper.authors}</p>
+              </div>
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
   </div>

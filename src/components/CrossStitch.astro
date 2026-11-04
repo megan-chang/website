@@ -31,20 +31,12 @@ const stitches = rows.flatMap((row, y) =>
   aria-label={label}
   aria-hidden={label ? undefined : "true"}
 >
-  {
-    stitches.map(({ x, y, color, planned }) => (
-      <g stroke={color} opacity={planned ? 0.22 : 1}>
-        <line x1={x + inset} y1={y + cell - inset} x2={x + cell - inset} y2={y + inset} />
-        <line
-          x1={x + inset}
-          y1={y + inset}
-          x2={x + cell - inset}
-          y2={y + cell - inset}
-          class="top"
-        />
-      </g>
-    ))
-  }
+  {stitches.map(({ x, y, color, planned }) => (
+    <g stroke={color} opacity={planned ? 0.22 : 1}>
+      <line x1={x + inset} y1={y + cell - inset} x2={x + cell - inset} y2={y + inset} />
+      <line x1={x + inset} y1={y + inset} x2={x + cell - inset} y2={y + cell - inset} class="top" />
+    </g>
+  ))}
 </svg>
 
 <style>
