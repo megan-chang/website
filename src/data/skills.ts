@@ -15,9 +15,9 @@ export const skillGroups: SkillGroup[] = [
       "EKS",
       "EC2",
       "DynamoDB",
-      "ElastiCache",
+      "Redis",
       "CloudWatch",
-      "Amazon MQ",
+      "RabbitMQ",
       "CloudFormation",
       "Kubernetes",
       "Linux",
@@ -26,17 +26,17 @@ export const skillGroups: SkillGroup[] = [
   {
     name: "Languages",
     color: "sage",
-    skills: ["Java", "Python", "SQL", "JavaScript", "C++", "Bash"],
+    skills: ["Java", "Python", "SQL", "JavaScript", "C++", "Bash", "Node.js"],
   },
   {
     name: "Tools",
     color: "cocoa",
-    skills: ["Git", "CI/CD", "HTML/CSS", "pandas", "Matplotlib"],
+    skills: ["Git", "CI/CD", "Jira", "HTML/CSS", "pandas", "Matplotlib"],
   },
   {
     name: "Research toolkit",
     color: "blush",
-    skills: ["MATLAB", "LaTeX", "Molecular dynamics"],
+    skills: ["MATLAB", "LaTeX", "Molecular Dynamics Simulations"],
     note: "where I learned to love data",
   },
 ];

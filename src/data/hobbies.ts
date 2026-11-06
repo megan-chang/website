@@ -19,7 +19,7 @@ export const hobbies: Hobby[] = [
   },
   {
     name: "Fashion",
-    blurb: "Colour palettes are a design system, fight me.",
+    blurb: "Colour palettes are my favourite design system.",
     pattern: "dress",
   },
   {

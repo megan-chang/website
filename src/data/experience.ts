@@ -36,7 +36,7 @@ export const releases: Release[] = [
       },
       {
         type: "feat",
-        text: "Java services on AWS EKS, backed by DynamoDB, ElastiCache, and Amazon MQ.",
+        text: "Java services on AWS EKS, backed by DynamoDB, Redis, and RabbitMQ.",
       },
       { type: "lead", text: "Scope the work, plan releases, and keep leadership in the loop." },
       { type: "ops", text: "On call when production needs me." },

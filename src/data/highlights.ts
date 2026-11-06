@@ -12,13 +12,13 @@ export const highlights: Highlight[] = [
     title: "Live captions at scale",
     body: "The backend behind AI-Media's captioning, translation, and dubbing products, used around the world.",
     pattern: "captions",
-    stack: ["Java", "EKS", "DynamoDB", "Amazon MQ"],
+    stack: ["Java", "C++", "Node.js", "EKS", "DynamoDB", "Redis", "RabbitMQ"],
   },
   {
     title: "A test suite from zero",
-    body: "Designed and built the first automated test suite for the API products, so releases ship with confidence.",
+    body: "Designed and built the first automated API/GUI tests for our products, so releases ship with confidence.",
     pattern: "check",
-    stack: ["API tests", "CI/CD"],
+    stack: ["Python", "API/GUI tests", "CI/CD"],
   },
   {
     title: "Taming legacy code",
@@ -30,6 +30,6 @@ export const highlights: Highlight[] = [
     title: "On-call, minus the panic",
     body: "Production incident response for systems people rely on live. Calm under pressure has been practised on air.",
     pattern: "bell",
-    stack: ["CloudWatch", "ElastiCache", "Runbooks"],
+    stack: ["CloudWatch", "SNS", "AWS Lambda", "Runbooks"],
   },
 ];

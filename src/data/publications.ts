@@ -34,11 +34,12 @@ export const publications: Publication[] = [
     imageAlt: "Graphical abstract for the KEAP1 cancer mutants paper",
   },
   {
-    title: "MSc thesis: structural and dynamical properties of Nrf2 via molecular dynamics",
+    title:
+      "Elucidating the Structural and Dynamical Properties of the Intrinsically Disordered Protein Nrf2 Using Molecular Dynamics Simulations",
     authors: "Chang, M.",
-    venue: "Western University",
+    venue: "MSc thesis, Western University",
     year: 2021,
-    url: "https://ir.lib.uwo.ca/etd/8293/",
+    url: "https://uwo.scholaris.ca/items/1070e423-7f03-408a-ac98-947b2c387db5",
     image: thesis,
     imageAlt: "Preview of the MSc thesis on Nrf2",
   },
