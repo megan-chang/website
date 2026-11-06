@@ -53,7 +53,7 @@ export const releases: Release[] = [
     changes: [
       {
         type: "feat",
-        text: "Built features across the Java/AWS backend and the eegcloud.tv site and API.",
+        text: "Built features across the Java/AWS backend and the Python eegcloud.tv site and REST API.",
       },
       { type: "ops", text: "Deployed and supported my own features in production." },
     ],

@@ -19,7 +19,7 @@ export const captions: string[] = [
   "Keeping live captions running for customers around the world.",
   "[keyboard clacking intensifies]",
   "Fun fact: before I wrote the caption software, I WAS the captions.",
-  "[upbeat crafting music]",
+  "[upbeat pop music]",
 ];
 
 export const nav = [
